@@ -5,10 +5,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
 import android.text.Layout;
 import android.view.View;
 
+import com.hl.mobilesafe.R;
 import com.hl.utils.ConstantValue;
 import com.hl.utils.SpUtil;
 import com.hl.view.SettingItemView;
@@ -19,7 +19,7 @@ import com.hl.view.SettingItemView;
 
 public class SettingActivity extends Activity {
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         initUpdate();
