@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <TextView
+      style="@style/TitleStyle"
+        android:text="高级工具"/>
+    <TextView
+        android:text="归属地查询"
+        android:textColor="#000"
+        android:padding="5dp"
+        android:textSize="19sp"
+        android:gravity="center"
+        android:background="@drawable/reset_setup_bg_press"
+        android:drawableLeft="@android:drawable/btn_star_big_on"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

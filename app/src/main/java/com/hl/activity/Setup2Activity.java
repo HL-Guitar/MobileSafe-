@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -24,7 +25,7 @@ import com.hl.view.SettingItemView;
  * Created by UTT on 2018/7/6.
  */
 
-public class Setup2Activity extends Activity {
+public class Setup2Activity extends BaseSetupActivity {
     private SettingItemView siv_sim_bound;
 
     @Override
@@ -34,17 +35,39 @@ public class Setup2Activity extends Activity {
         initUI();
     }
 
+    @Override
+    public void showNext() {
+        String serialNumber = SpUtil.getString(this, ConstantValue.SIM_NUMBER, "");
+        if (!TextUtils.isEmpty(serialNumber)) {
+            Intent it = new Intent(getApplication(), Setup3Activity.class);
+            startActivity(it);
+            finish();
+            overridePendingTransition(R.anim.next_in_anim, R.anim.next_out_anim);
+        } else {
+            ToastUtil.show(this, "请绑定sim卡");
+        }
+    }
+
+    @Override
+    public void showPre() {
+        Intent it = new Intent(getApplication(), Setup1Activity.class);
+        startActivity(it);
+        finish();
+        overridePendingTransition(R.anim.pre_in_anim, R.anim.pre_out_anim);
+    }
+
+
     /**
      * 初始化界面控件
      */
     private void initUI() {
-        siv_sim_bound = (SettingItemView)findViewById(R.id.siv_sim_bound);
+        siv_sim_bound = (SettingItemView) findViewById(R.id.siv_sim_bound);
         //1,回显(读取已有的绑定状态,用作显示,sp中是否存储了sim卡的序列号)
         final String sim_number = SpUtil.getString(this, ConstantValue.SIM_NUMBER, "");
         //2,判断是否序列卡号为""
-        if(TextUtils.isEmpty(sim_number)){
+        if (TextUtils.isEmpty(sim_number)) {
             siv_sim_bound.setCheck(false);
-        }else{
+        } else {
             siv_sim_bound.setCheck(true);
         }
         siv_sim_bound.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +76,7 @@ public class Setup2Activity extends Activity {
                 //获取原有状态
                 boolean ischeck = siv_sim_bound.isCheck();
 
-                if (!ischeck){
+                if (!ischeck) {
                     //存储序列卡号
                     PermissionUtils.checkAndRequestPermission(Setup2Activity.this, Manifest.permission.READ_PHONE_STATE, 1, new PermissionUtils.PermissionRequestSuccessCallBack() {
                         @Override
@@ -61,7 +84,7 @@ public class Setup2Activity extends Activity {
                             setSimSeriesNum();
                         }
                     });
-                }else{
+                } else {
                     //7,将存储序列卡号的节点,从sp中删除掉
                     SpUtil.remove(getApplicationContext(), ConstantValue.SIM_NUMBER);
                     siv_sim_bound.setCheck(!ischeck);
@@ -70,34 +93,17 @@ public class Setup2Activity extends Activity {
         });
     }
 
-    public void nextPage(View v){
-        String serialNumber = SpUtil.getString(this, ConstantValue.SIM_NUMBER, "");
-        if (!TextUtils.isEmpty(serialNumber)){
-            Intent it = new Intent(getApplication(),Setup3Activity.class);
-            startActivity(it);
-            finish();
-
-        }else {
-            ToastUtil.show(this,"请绑定sim卡");
-        }
-
-    }
-    public void prePage(View v){
-        Intent it = new Intent(getApplication(),Setup1Activity.class);
-        startActivity(it);
-        finish();
-
-    }
 
     /**
      * 存储
      */
-    public void setSimSeriesNum(){
-        ToastUtil.show(this,"权限获取成功");
+    public void setSimSeriesNum() {
+        ToastUtil.show(this, "权限获取成功");
         //获取sim卡序列号的TelephonyManager
         TelephonyManager manager = (TelephonyManager)
                 getSystemService(Context.TELEPHONY_SERVICE);
         //获取sim卡的序列号
+
         String simSerialNumber = manager.getSimSerialNumber();
         Log.e("sim",simSerialNumber);
 

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".HomeActivity"
+    tools:context="com.hl.activity.HomeActivity"
     android:background="#FFF"
     android:orientation="vertical">
 
@@ -26,10 +26,10 @@
     <GridView
         android:id="@+id/gv_home"
         android:numColumns="3"
-
-        android:verticalSpacing="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:verticalSpacing="10dip"
+        android:layout_marginTop="15dip"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
     </GridView>
 </LinearLayout>

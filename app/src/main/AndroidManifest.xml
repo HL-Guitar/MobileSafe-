@@ -13,6 +13,16 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- //获取准确GPS坐标的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" /> <!-- //允许模拟器模拟位置坐标的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- //获取粗略坐标的权限(网络定位时使用) -->
 
     <application
         android:name="com.hl.activity.MyApplication"
@@ -30,12 +40,38 @@
 
         </activity>
         <activity android:name="com.hl.activity.SettingActivity"></activity>
-        <activity android:name="com.hl.activity.TestActivity"/>
+        <activity android:name="com.hl.activity.ContactListActivity"/>
         <activity android:name="com.hl.activity.SetupOverActivity"/>
         <activity android:name="com.hl.activity.Setup1Activity"/>
         <activity android:name="com.hl.activity.Setup2Activity"/>
         <activity android:name="com.hl.activity.Setup3Activity"/>
         <activity android:name="com.hl.activity.Setup4Activity"/>
+        <receiver android:name="com.hl.receiver.BootReceiver">
+            <intent-filter>
+                <!--开机广播-->
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.hl.receiver.SmsReceiver">
+            <intent-filter>
+                <!--监听手机接收短信-->
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.hl.receiver.AdminReceiver"
+            android:description="@string/sample_device_admin_description"
+            android:label="@string/sample_device_admin"
+            android:permission="android.permission.BIND_DEVICE_ADMIN" >
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin_sample" />
+
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.hl.service.LocationService" />
 
 
     </application>

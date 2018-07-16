@@ -40,6 +40,7 @@ public class HomeActivity extends Activity {
         setContentView(R.layout.activity_homeactivity);
         initUI();
         initData();
+        PermissionUtils.requestMorePermissions(this,new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION},1);
     }
 
     /**
@@ -73,7 +74,7 @@ public class HomeActivity extends Activity {
                         showDialog();
                         break;
                     case 1:
-                        checkPer(Manifest.permission.CAMERA);
+                        checkPer(Manifest.permission.RECEIVE_BOOT_COMPLETED);
                         break;
                     case 8:
                         Intent it = new Intent(getApplicationContext(),SettingActivity.class);
@@ -228,7 +229,7 @@ public class HomeActivity extends Activity {
             TextView tv_title = (TextView)views.findViewById(R.id.tv_title);
             ImageView tv_icon = (ImageView) views.findViewById(R.id.tv_icon);
             tv_title.setText(mTitleStrs[i]);
-            tv_icon.setBackgroundResource(mDrawableIds[i]);
+            tv_icon.setImageResource(mDrawableIds[i]);
 
             return views;
         }

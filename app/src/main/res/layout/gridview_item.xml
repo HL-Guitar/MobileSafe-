@@ -3,17 +3,18 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:background="#FFF"
+    android:gravity="center"
     android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/tv_icon"
         android:background="@drawable/home_callmsgsafe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="60dip"
+        android:layout_height="60dip" />
     <TextView
         android:id="@+id/tv_title"
         android:text="模块标题"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textColor="#000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
