@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 24
     defaultConfig {
-        applicationId "com.hl.activity"
+        applicationId "com.hl.mobilesafe"
         minSdkVersion 19
         targetSdkVersion 23
         versionCode 1

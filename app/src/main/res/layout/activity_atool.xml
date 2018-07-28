@@ -2,11 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="#fff"
     android:layout_height="match_parent">
     <TextView
       style="@style/TitleStyle"
         android:text="高级工具"/>
     <TextView
+        android:id="@+id/tv_query_phone_address"
         android:text="归属地查询"
         android:textColor="#000"
         android:padding="5dp"

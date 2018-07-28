@@ -9,6 +9,7 @@
             倒数第二位:更新部分功能
             第一位:项目重大更新(代码重构,大部分功能添加,界面整体修改)-->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA"/>
@@ -21,7 +22,6 @@
     <uses-permission android:name="android.permission.WRITE_SMS"/>
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- //获取准确GPS坐标的权限 -->
-    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" /> <!-- //允许模拟器模拟位置坐标的权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- //获取粗略坐标的权限(网络定位时使用) -->
 
     <application
@@ -46,6 +46,8 @@
         <activity android:name="com.hl.activity.Setup2Activity"/>
         <activity android:name="com.hl.activity.Setup3Activity"/>
         <activity android:name="com.hl.activity.Setup4Activity"/>
+        <activity android:name="com.hl.activity.AToolActivity"/>
+        <activity android:name="com.hl.activity.QueryAddressActivity"/>
         <receiver android:name="com.hl.receiver.BootReceiver">
             <intent-filter>
                 <!--开机广播-->

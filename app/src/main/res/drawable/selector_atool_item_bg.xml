@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <?xml version="1.0" encoding="utf-8"?>
+
     <selector xmlns:android="http://schemas.android.com/apk/res/android" >
         <!-- 选中深绿色图片 -->
         <item android:state_pressed="true"	android:drawable="@android:color/darker_gray"/>
@@ -8,4 +7,4 @@
         <!-- 创建colors.xml文件,然后维护pink色值 -->
         <item android:drawable="@color/pink"/>
     </selector>
-</selector>
+

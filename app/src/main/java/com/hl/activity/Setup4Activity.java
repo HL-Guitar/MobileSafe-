@@ -60,7 +60,6 @@ public class Setup4Activity extends BaseSetupActivity {
                 if(isChecked){
                     PermissionUtils.requestMorePermissions(context,new String[]{Manifest.permission.SEND_SMS,
                             Manifest.permission.READ_SMS,Manifest.permission.RECEIVE_SMS},3);
-
                 }else{
                     cb_box.setText("安全设置已关闭");
                 }
@@ -84,6 +83,9 @@ public class Setup4Activity extends BaseSetupActivity {
     public void showNext() {
         PermissionUtils.requestMorePermissions(context,new String[]{Manifest.permission.SEND_SMS,
                 Manifest.permission.READ_SMS,Manifest.permission.RECEIVE_SMS},3);
+        Intent it = new Intent(getApplication(), SetupOverActivity.class);
+        startActivity(it);
+        finish();
     }
 
     @Override
@@ -118,6 +120,7 @@ public class Setup4Activity extends BaseSetupActivity {
                     boolean open_security = SpUtil.getBoolean(this, ConstantValue.OPEN_SECURITY, false);
 
                     if(open_security) {
+                        SpUtil.putBoolean(this,ConstantValue.SETUP_OVER,true);
                         Intent it = new Intent(getApplication(), SetupOverActivity.class);
                         startActivity(it);
                         finish();

@@ -76,9 +76,13 @@ public class HomeActivity extends Activity {
                     case 1:
                         checkPer(Manifest.permission.RECEIVE_BOOT_COMPLETED);
                         break;
+                    case 7:
+                        Intent it = new Intent(getApplicationContext(),AToolActivity.class);
+                        startActivity(it);
+                        break;
                     case 8:
-                        Intent it = new Intent(getApplicationContext(),SettingActivity.class);
-                       startActivity(it);
+                        Intent its = new Intent(getApplicationContext(),SettingActivity.class);
+                       startActivity(its);
                        break;
                 }
             }
@@ -140,7 +144,7 @@ public class HomeActivity extends Activity {
                 if(Md5Util.encoder(pwd1).equals(pwd2)){
                     //进入应用手机防盗模块,开启一个新的activity
                     //Intent it =new Intent(getApplicationContext(),TestActivity.class);
-                    Intent it = new Intent(getApplicationContext(), Setup1Activity.class);
+                    Intent it = new Intent(getApplicationContext(), SetupOverActivity.class);
                     startActivity(it);
                     //跳转到新的界面以后需要去隐藏对话框
                     alertDialog.dismiss();
@@ -182,7 +186,7 @@ public class HomeActivity extends Activity {
                 if(!TextUtils.isEmpty(pwd1) && !TextUtils.isEmpty(pwd2)){
                     if (pwd1.equals(pwd2)){
                         //进入应用手机防盗模块,开启一个新的activity
-                        Intent it =new Intent(getApplicationContext(),Setup1Activity.class);
+                        Intent it =new Intent(getApplicationContext(),SetupOverActivity.class);
                         startActivity(it);
                         //跳转到新的界面以后需要去隐藏对话框
                         alertDialog.dismiss();
